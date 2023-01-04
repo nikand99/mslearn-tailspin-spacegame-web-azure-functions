@@ -1,7 +1,11 @@
 trigger:
 - '*'
 
-- stage: 'Build'
+variables:
+  buildConfiguration: 'Release'
+  webRepository: 'web'
+  tag: '$(Build.BuildId)'
+  - stage: 'Build'
   displayName: 'Build and push'
   jobs:  
   - job: 'Build'
@@ -68,11 +72,6 @@ trigger:
         zipAfterPublish: true
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
-
-      variables:
-  buildConfiguration: 'Release'
-  webRepository: 'web'
-  tag: '$(Build.BuildId)'
 
 - stage: 'Deploy'
   displayName: 'Deploy the container'
