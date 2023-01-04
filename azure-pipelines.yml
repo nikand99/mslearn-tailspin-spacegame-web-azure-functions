@@ -3,7 +3,6 @@ trigger:
 
 variables:
   webRepository: 'web'
-  tag: '$(Build.BuildId)'
   - stage: 'Build'
     displayName: 'Build and push'
     jobs:  
